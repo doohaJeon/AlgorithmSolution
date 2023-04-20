@@ -21,7 +21,7 @@ public class RunningRace {
 			answer[i] = players[i];
 			map.put(players[i], i);
 		}
-		// callings배열과 answer배열의 요소들을 비교해서 요소의 자리를 바꿔줌
+		
 //	        for(int i = 0; i<callings.length; i++){
 //	            for(int j = 0; j<answer.length; j++){
 //	            	String temp = "";
@@ -33,12 +33,16 @@ public class RunningRace {
 //	            }
 //	        }
 
-		for (int i = 0; i < callings.length; i++) {
-			int index = map.get(callings[i]);
-			String temp = answer[index - 1];
-			answer[index - 1] = answer[index];
-			answer[index] = temp;
+		for (String calling : callings) {
+			int index = map.get(calling);
+			String temp = answer[index-1];
+			answer[index-1] = calling;
+			answer[index] = temp;	
+			map.put(calling, index-1);
+			map.put(temp, index);
 		}
+	
+		
 		return answer;
 	}
 
